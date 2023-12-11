@@ -1,0 +1,139 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .login-form {
+        width: 300px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .login-form h1 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .login-form form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .login-form label {
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .login-form input {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .login-form button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      .login-form button:hover {
+        background-color: #45a049;
+      }
+
+      .login-form .forgot-password {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .login-form .signup-link {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .login-form a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .login-form a:hover {
+        text-decoration: underline;
+      }
+
+      .error {
+        background-color: rgb(243, 183, 183);
+        color: rgb(107, 4, 4);
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+      }
+      .error ul {
+        text-decoration: none;
+      }
+    </style>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="login-form">
+      <h1>Mallon</h1>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flashes">
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <form method="post" action="{{ url_for('login') }}">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+
+        <button type="submit">Login</button>
+      </form>
+
+      <div class="forgot-password">
+        <a href="#">Esqueceu sua senha?</a>
+      </div>
+
+      <div class="signup-link">
+        <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+      </div>
+    </div>
+  </body>
+</html>
